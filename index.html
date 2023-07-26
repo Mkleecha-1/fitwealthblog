@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>간단한 계산기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .calculator {
+            width: 250px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .display {
+            width: 100%;
+            height: 40px;
+            font-size: 20px;
+            text-align: right;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+
+        .buttons-row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .button {
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            margin: 5px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Custom button colors */
+        .button.add {
+            background-color: #4CAF50; /* Green */
+        }
+
+        .button.subtract {
+            background-color: #0074D9; /* Blue */
+        }
+
+        .button.multiply {
+            background-color: #FF4136; /* Red */
+        }
+
+        .button.divide {
+            background-color: #FF851B; /* Orange */
+        }
+
+        .button.equals {
+            background-color: #B10DC9; /* Purple */
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display"></div>
+        <div class="buttons-row">
+            <div class="button" onclick="addToDisplay('1')">1</div>
+            <div class="button" onclick="addToDisplay('2')">2</div>
+            <div class="button" onclick="addToDisplay('3')">3</div>
+            <div class="button add" onclick="addToDisplay('+')">+</div>
+        </div>
+        <div class="buttons-row">
+            <div class="button" onclick="addToDisplay('4')">4</div>
+            <div class="button" onclick="addToDisplay('5')">5</div>
+            <div class="button" onclick="addToDisplay('6')">6</div>
+            <div class="button subtract" onclick="addToDisplay('-')">-</div>
+        </div>
+        <div class="buttons-row">
+            <div class="button" onclick="addToDisplay('7')">7</div>
+            <div class="button" onclick="addToDisplay('8')">8</div>
+            <div class="button" onclick="addToDisplay('9')">9</div>
+            <div class="button multiply" onclick="addToDisplay('*')">*</div>
+        </div>
+        <div class="buttons-row">
+            <div class="button" onclick="addToDisplay('0')">0</div>
+            <div class="button" onclick="addToDisplay('.')">.</div>
+            <div class="button equals" onclick="calculate()">=</div>
+            <div class="button divide" onclick="addToDisplay('/')">/</div>
+        </div>
+        <div class="buttons-row">
+            <div class="button" onclick="clearDisplay()">C</div>
+        </div>
+    </div>
+
+    <script>
+        function addToDisplay(value) {
+            document.getElementById("display").innerText += value;
+        }
+
+        function calculate() {
+            const expression = document.getElementById("display").innerText;
+            try {
+                const result = eval(expression);
+                document.getElementById("display").innerText = result;
+            } catch (error) {
+                document.getElementById("display").innerText = "Error";
+            }
+        }
+
+        function clearDisplay() {
+            document.getElementById("display").innerText = "";
+        }
+    </script>
+</body>
+</html>
+
+
+
